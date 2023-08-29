@@ -17,18 +17,18 @@ namespace PassGen___Pro
         public static void Tab()
         => Console.WriteLine("-------------------------------------------------------------------------".PadLeft(100));
 
-        public static void InterfaceHead(string Title,int Left = 70)
+        public static void InterfaceHead(string Title,int Left = 70,ConsoleColor color = ForeColor)
         {
-            Console.ForegroundColor = ForeColor;
+            Console.ForegroundColor = color;
             Tab();
             Console.WriteLine(string.Concat("PassGen - Pro".PadLeft(70), "\n",
                 Title.PadLeft(Left)));
             Tab();
         }
 
-        public static void InterfaceFooter()
+        public static void InterfaceFooter(ConsoleColor color = ForeColor)
         {
-            Console.ForegroundColor = ForeColor;
+            Console.ForegroundColor = color;
             Tab();
             Console.WriteLine( "Keep Your Passwords Strog With US :)".PadLeft(85));
             Console.WriteLine("PassGen - Pro".PadLeft(70));

@@ -10,7 +10,6 @@ namespace PassGen___Pro
     {
         static void Main()
         {
-
             MainMenuInterface.ShowMainMenuInterface();
 
             Console.ReadKey();

@@ -10,13 +10,14 @@ namespace PassGen___Pro
     internal class MainMenuInterface : BaseInterface
     {
         private const int FirstMenuOptionsIndex = 1;
-        private const int LastMenuOptionsIndex = 3;
+        private const int LastMenuOptionsIndex = 4;
 
         public enum eMainMenuOptions
         {
             Generate_A_New_Random_Password_With_Random_Length = 1,
             Generate_A_New_Custom_Password,
-            Show_Characters_Sets
+            Show_Characters_Sets,
+            Display_Generated_Passwords
         }
 
         private static int _GetUserChoice()
@@ -47,7 +48,8 @@ namespace PassGen___Pro
             Console.ForegroundColor = BaseInterface.ForeColor;
             Console.WriteLine("\n\t\t\t\t" + $"[1] {eMainMenuOptions.Generate_A_New_Random_Password_With_Random_Length}");
             Console.WriteLine($"\t\t\t\t[2] {eMainMenuOptions.Generate_A_New_Custom_Password}");
-            Console.WriteLine($"\t\t\t\t[3] {eMainMenuOptions.Show_Characters_Sets}"+ "\n\n");
+            Console.WriteLine($"\t\t\t\t[3] {eMainMenuOptions.Show_Characters_Sets}");
+            Console.WriteLine($"\t\t\t\t[4] {eMainMenuOptions.Display_Generated_Passwords}" + "\n\n");
 
             BaseInterface.InterfaceFooter();
             _PerformMenuOption((eMainMenuOptions)_GetUserChoice());
@@ -70,6 +72,11 @@ namespace PassGen___Pro
                 case eMainMenuOptions.Show_Characters_Sets:
                     Console.Clear();
                     CharactersSetInterface.ShowCharactersSetInterface();
+                    GoBackToMainMenue();
+                    break;
+                case eMainMenuOptions.Display_Generated_Passwords:
+                    Console.Clear();
+                    GeneratedPasswordsInterface.ShowGeneratedPasswordsInterface();
                     GoBackToMainMenue();
                     break;
             }

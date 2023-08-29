@@ -13,17 +13,38 @@ namespace PassGen___Pro.Entities
         public static string GeneratedPasswordsFilePath 
         { get => @"C:\C#\Password Generator Project\PassGen - Pro\GeneratedPasswordsFile.txt"; }
 
-
         public static void SaveToFile(string str, string FilePath)
         {
             try
             {
-                StreamWriter writer = File.AppendText(FilePath);
-                writer.WriteLine(str);
-                writer.Flush();
-                writer.Close();
+                using (StreamWriter writer = File.AppendText(FilePath))
+                {
+                    writer.WriteLine(str);
+                    writer.Flush();
+                    writer.Close();
+                }
             }
             catch (Exception) { return; }
         }
+
+        public static string ReadAllFileContent(string FilePath)
+        {
+            try
+            {
+                if (!File.Exists(FilePath))
+                    return null;
+
+                using (StreamReader reader = File.OpenText(FilePath))
+                {
+                    string str = default;
+                    str = reader.ReadToEnd();
+                    reader.Close();
+                    return str;
+                }
+            }
+            catch (Exception) { return null; }  
+        }
+
+
     }
 }

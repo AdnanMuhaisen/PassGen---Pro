@@ -10,17 +10,30 @@ namespace PassGen___Pro.System_Interfaces
     {
         public static void ShowGenerateNewCustomPasswordInterface()
         {
-            int Choices = 0, Length = 0;
-            BaseInterface.InterfaceHead("Generate New Custom Password",75);
-            _ReadPasswordConstraints(ref Choices, ref Length);
+            do
+            {
+                Console.Clear();
+                int Choices = 0, Length = 0;
+                BaseInterface.InterfaceHead("Generate New Custom Password", 75);
+                _ReadPasswordConstraints(ref Choices, ref Length);
 
-            Password password = new Password(Generator.GeneratePassword(Choices, Length));
-            password.Save();
+                if (Length <= 0)
+                {
+                    Console.WriteLine("\t\t\t\tThe Length Of Your Password Must Be Graeter Than 0 !");
+                    Console.ReadKey();
+                    continue;
+                }
 
-            Console.WriteLine($"\t\t\t\tYour Password : {password.Content}\n\t\t\t\tCharacters Set : " +
-                $"{Password.GetPasswordCharactersSetString(Choices)}\n\t\t\t\t" +
-                $"Length : {Length}\n");
-            BaseInterface.InterfaceFooter();
+                Password password = new Password(Generator.GeneratePassword(Choices, Length));
+                password.Save();
+
+                Console.WriteLine($"\t\t\t\tYour Password : {password.Content}\n\t\t\t\tCharacters Set : " +
+                    $"{Password.GetPasswordCharactersSetString(Choices)}\n\t\t\t\t" +
+                    $"Length : {Length}\n");
+                BaseInterface.InterfaceFooter();
+            }
+            while (_RegenerateOrGoBackToMainMenue());
+
             Console.ReadKey();
         }
 
@@ -45,6 +58,12 @@ namespace PassGen___Pro.System_Interfaces
                 Choices |= (int)Choice;
             Console.WriteLine();
             return;
+        }
+
+        private static bool _RegenerateOrGoBackToMainMenue()
+        {
+            Console.Write("\t\t\t\tRegenerate Another Password [Yes] , Go Back To Main Menu [Press Any Key] :");
+            return string.Compare(Console.ReadLine(), "yes", true) == 0;
         }
 
     }

@@ -48,6 +48,7 @@
     <Compile Include="Entities\Generator.cs" />
     <Compile Include="InputValidation.cs" />
     <Compile Include="System Interfaces\CharactersSetInterface.cs" />
+    <Compile Include="System Interfaces\GeneratedPasswordsInterface.cs" />
     <Compile Include="System Interfaces\GenerateNewCustomPasswordInterface.cs" />
     <Compile Include="System Interfaces\MainMenuInterface.cs" />
     <Compile Include="System Interfaces\BaseInterface.cs" />

@@ -19,13 +19,7 @@ namespace PassGen___Pro.System_Interfaces
             Console.WriteLine($"\t\t\t\t\t[4] {Generator.eCharactersSet.SpecialSymbols}");
 
             BaseInterface.InterfaceFooter();
+            Console.ReadKey();
         }
-
-
-
-
-
-
-
     }
 }
